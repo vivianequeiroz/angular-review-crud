@@ -9,7 +9,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -17,7 +18,9 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],
