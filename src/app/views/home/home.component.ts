@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-dialog.component';
@@ -68,5 +68,9 @@ export class HomeComponent implements OnInit {
 
   deleteElement(position: number) {
     this.dataSource = this.dataSource.filter((p) => p.position !== position);
+  }
+
+  editElement(element: PeriodicElement) {
+    this.openDialog(element);
   }
 }

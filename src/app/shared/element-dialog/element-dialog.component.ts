@@ -1,5 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { PeriodicElement } from 'src/app/views/home/home.component';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import {
+  HomeComponent,
+  PeriodicElement,
+} from 'src/app/views/home/home.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,14 +12,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ElementDialogComponent implements OnInit {
   element!: PeriodicElement;
+  isChange!: boolean;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) 
+    @Inject(MAT_DIALOG_DATA)
     public data: PeriodicElement,
-    public dialogRef: MatDialogRef<ElementDialogComponent>,
+    public dialogRef: MatDialogRef<ElementDialogComponent>
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.data.position != null) {
+      this.isChange = true;
+    }
+  }
 
   onCancel(): void {
     this.dialogRef.close();

@@ -27,7 +27,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mata-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" aria-label="Edit">
+        <button mat-icon-button (click)="editElement(element)" color="primary" aria-label="Edit">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button (click)="deleteElement(element.position)" color="primary" aria-label="Delete">
