@@ -58,11 +58,15 @@ export class HomeComponent implements OnInit {
           : element,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result != undefined) {
         this.dataSource.push(result);
         this.table.renderRows();
       }
     });
+  }
+
+  deleteElement(position: number) {
+    this.dataSource = this.dataSource.filter((p) => p.position !== position);
   }
 }
