@@ -55,13 +55,23 @@ export class HomeComponent implements OnInit {
               weight: null,
               symbol: '',
             }
-          : element,
+          : {
+              position: element.position,
+              name: element.name,
+              weight: element.weight,
+              symbol: element.symbol,
+            },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result != undefined) {
-        this.dataSource.push(result);
-        this.table.renderRows();
+        if (this.dataSource.map((p) => p.position).includes(result.position)) {
+          this.dataSource[result.position - 1] = result;
+          this.table.renderRows();
+        } else {
+          this.dataSource.push(result);
+          this.table.renderRows();
+        }
       }
     });
   }
