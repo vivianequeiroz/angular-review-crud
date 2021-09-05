@@ -1,9 +1,6 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import {
-  HomeComponent,
-  PeriodicElement,
-} from 'src/app/views/home/home.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PeriodicElement } from '../../models/periodic-element';
 
 @Component({
   selector: 'app-element-dialog',
