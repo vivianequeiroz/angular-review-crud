@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { PeriodicElement } from '../../models/periodic-element';
 import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-dialog.component';
+import { PeriodicElementService } from 'src/app/services/periodic-element.service';
 
 const ELEMENT_DATA: PeriodicElement[] = [
   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -21,6 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [PeriodicElementService],
 })
 export class HomeComponent implements OnInit {
   @ViewChild(MatTable)
@@ -32,9 +34,18 @@ export class HomeComponent implements OnInit {
     'symbol',
     'actions',
   ];
-  dataSource = ELEMENT_DATA;
+  dataSource!: PeriodicElement[];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    public periodicElementService: PeriodicElementService
+  ) {
+    this.periodicElementService
+      .getElements()
+      .subscribe((data: PeriodicElement[]) => {
+        this.dataSource = data;
+      });
+  }
 
   ngOnInit(): void {}
 
