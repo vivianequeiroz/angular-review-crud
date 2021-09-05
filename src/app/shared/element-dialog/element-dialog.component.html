@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Create element</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Number</mat-label>
+    <input matInput [(ngModel)]="data.position">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Weight</mat-label>
+    <input matInput [(ngModel)]="data.weight">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Symbol</mat-label>
+    <input matInput [(ngModel)]="data.symbol">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+</div>
